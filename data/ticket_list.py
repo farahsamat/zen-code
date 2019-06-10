@@ -1,12 +1,24 @@
 import requests
 import json
+import pandas as pd
 
-url = 'https://{subdomain}.zendesk.com/api/v2/tickets.json?per_page=25'
-
-while url:
-    response = requests.get(url, auth=('{username}', '{password}'))
-    data = response.json()
-    for item in data['tickets']:
+#pagination
+pagination = '?per_page=25'
+per_page = 'https://{}.zendesk.com/api/v2/tickets.json{}'.format(subdomain, pagination)
+while per_page:
+    r = requests.get(per_page, auth=auth)
+    data = r.json()
+    for ticket in data['tickets']:
         keys = ['id', 'subject', 'status', 'priority']
-        print ([item.get(key) for key in keys])
-    url = data['next_page']
+        print ([ticket.get(key) for key in keys])
+    per_page = data['next_page']
+
+#view ticket
+ticket_id = input("Please enter a ticket number: ")
+ticket_url = 'https://{}.zendesk.com/api/v2/tickets/{}.json'.format(subdomain, ticket_id)
+try:
+    r = requests.get(ticket_url, auth=auth)
+    data = r.json()
+    print (pd.DataFrame(data))
+except ValueError:
+    print("Invalid ticket number")
