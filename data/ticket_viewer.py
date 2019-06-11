@@ -1,34 +1,35 @@
-from testclass import Tickets
+import numpy as np
+from Tickets import Tickets
 
 ticket_list = Tickets()
 select_ticket = Tickets()
 
-user_prompt = input("Type '1' to view ticket list or '2' to view selected ticket ")
-error_message = "Invalid"
-user_exit = "Have a nice day!"
+main_menu = np.array(["Display ticket list", "View ticket", "Quit"])
 
-def user_interaction(user_input):
-    while int(user_input) == 1:
+def input_number(prompt):
+    while True:
+        try:
+            num=float(input(prompt))
+            break
+        except ValueError:
+            print ("Invalid input")
+    return num
+
+
+def display_menu(options):
+    for i in range(len(options)):
+        print("{:d}. {:s}".format(i+1, options[i]))
+
+    choice = 0
+    while not(np.any(choice == np.arange(len(options))+1)):
+        choice = input_number("Please choose your option ")
+    return choice
+
+while True:
+    choice = display_menu(main_menu)
+    if choice == 1:
         ticket_list.view_list()
-        option1 = input("Do you want to view list again? (Y/N) ")
-        if option1.lower() == 'y':
-            continue
-        elif option1.lower() == 'n':
-            print (user_exit)
-            break
-        else:
-            print (error_message)
-
-    while int(user_input) == 2:
+    elif choice == 2:
         select_ticket.view_ticket()
-        option2 = input("Do you want to choose another ticket? (Y/N) ")
-        if option2.lower() == 'y':
-            continue
-        elif option2.lower() == 'n':
-            print (user_exit)
-            break
-        else:
-            print (error_message)
-
-
-user_interaction(user_prompt)
+    elif choice == 3:
+        break
