@@ -1,5 +1,7 @@
-import numpy as np
 from Tickets import Tickets
+import numpy as np
+import os
+os.system('cls' if os.name == 'nt' else 'clear')
 
 ticket_list = Tickets()
 select_ticket = Tickets()
@@ -17,12 +19,15 @@ def input_number(prompt):
 
 
 def display_menu(options):
+    print(" ")
+    print ("----------MAIN MENU-----------------")
     for i in range(len(options)):
         print("{:d}. {:s}".format(i+1, options[i]))
 
     choice = 0
     while not(np.any(choice == np.arange(len(options))+1)):
-        choice = input_number("Please choose your option ")
+        choice = input_number("Please choose your option: ")
+        print(" ")
     return choice
 
 while True:
