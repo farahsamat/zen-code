@@ -7,6 +7,9 @@ This project is part of the Zendesk Software Engineering Intern selection proces
 * Install dependencies: `pip install -r requirements.txt`
 * API authentication credentials: Rename `.env.example` to `.env` and populate it with the required login credentials.
 
+## Running the happy path tests
+On the CLI, run: `python -m unittest`
+
 ## Using the ticket viewer
 The ticket viewer is a CLI. Ensure you are working in the directory where the script is saved.
 
