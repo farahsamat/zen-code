@@ -34,14 +34,21 @@ def display_menu(options):
 if __name__ == "__main__":
     username = os.getenv("USERNAME")
     password = os.getenv("PASSWORD")
+    root_url = 'https://farahsamat.zendesk.com/api/v2/tickets'
+    page_size = 25
 
-    tickets = Tickets(username, password)
+    tickets = Tickets(username, password, root_url)
 
     while True:
         choice = display_menu(main_menu)
         if choice == 1:
-            tickets.view_list()
+            next_page = 1
+            next_page = tickets.view_list(next_page, page_size)
+            while next_page:
+                input("Press any key to view the next page")
+                next_page = tickets.view_list(next_page, page_size)
         elif choice == 2:
-            tickets.view_ticket()
+            ticket_id = input("Please enter a ticket number: ")
+            tickets.view_ticket(ticket_id)
         elif choice == 3:
             break
