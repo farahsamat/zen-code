@@ -1,2 +1,6 @@
 python-dotenv
 beautifultable
+numpy
+pandas
+requests
+json
