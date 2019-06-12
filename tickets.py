@@ -37,14 +37,14 @@ class Tickets:
                     continue
         except KeyError:
             print("URL/Authentication error")
-        except requests.exceptions.RequestException as err:
-            print ("Request Error ", err)
         except requests.exceptions.HTTPError as errh:
-            print ("Http Error: ", errh)
+            print("Http Error: ", errh)
         except requests.exceptions.ConnectionError as errc:
-            print ("Error Connecting: ", errc)
+            print("Error Connecting: ", errc)
         except requests.exceptions.Timeout as errt:
-            print ("Timeout Error: ", errt)
+            print("Timeout Error: ", errt)
+        except requests.exceptions.RequestException as err:
+            print("Request Error: ", err)
 
     def view_ticket(self):
         try:
@@ -58,11 +58,11 @@ class Tickets:
             print("URL/Authentication error")
         except ValueError:
             print("Invalid ticket/Authentication error")
-        except requests.exceptions.RequestException as err:
-            print ("Request Error ", err)
         except requests.exceptions.HTTPError as errh:
-            print ("Http Error: ", errh)
+            print("Http Error: ", errh)
         except requests.exceptions.ConnectionError as errc:
-            print ("Error Connecting: ", errc)
+            print("Error Connecting: ", errc)
         except requests.exceptions.Timeout as errt:
-            print ("Timeout Error: ", errt)
+            print("Timeout Error: ", errt)
+        except requests.exceptions.RequestException as err:
+            print("Request Error ", err)
