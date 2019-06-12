@@ -4,9 +4,6 @@ import os
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
-ticket_list = Tickets()
-select_ticket = Tickets()
-
 main_menu = np.array(["Display ticket list", "View ticket", "Quit"])
 
 
@@ -23,22 +20,28 @@ def input_number(prompt):
 
 def display_menu(options):
     print(" ")
-    print ("----------MAIN MENU-----------------")
+    print("----------MAIN MENU-----------------")
     for i in range(len(options)):
         print("{:d}. {:s}".format(i + 1, options[i]))
 
-    choice = 0
-    while not (np.any(choice == np.arange(len(options)) + 1)):
-        choice = input_number("Please choose your option: ")
+    option = 0
+    while not (np.any(option == np.arange(len(options)) + 1)):
+        option = input_number("Please choose your option: ")
         print(" ")
-    return choice
+    return option
 
 
-while True:
-    choice = display_menu(main_menu)
-    if choice == 1:
-        ticket_list.view_list()
-    elif choice == 2:
-        select_ticket.view_ticket()
-    elif choice == 3:
-        break
+if __name__ == "__main__":
+    username = os.getenv("USERNAME")
+    password = os.getenv("PASSWORD")
+
+    tickets = Tickets(username, password)
+
+    while True:
+        choice = display_menu(main_menu)
+        if choice == 1:
+            tickets.view_list()
+        elif choice == 2:
+            tickets.view_ticket()
+        elif choice == 3:
+            break

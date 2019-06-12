@@ -3,4 +3,3 @@ beautifultable
 numpy
 pandas
 requests
-json

@@ -1,21 +1,19 @@
-import requests
-import json
 import pandas as pd
-import os
+import requests
 from beautifultable import BeautifulTable
 from dotenv import load_dotenv
 
 load_dotenv()
-username = os.getenv("USERNAME")
-password = os.getenv("PASSWORD")
+
 url = 'https://farahsamat.zendesk.com/api/v2/tickets'
 per_page = '?per_page=25'
 data_to_display = ['id', 'subject', 'status']
 
 
 class Tickets:
-    def __init__(self):
-        pass
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
 
     def view_list(self):
         page_count = 1
@@ -24,12 +22,12 @@ class Tickets:
             while pagination:
                 table = BeautifulTable()
                 table.column_headers = data_to_display
-                r = requests.get(pagination, auth=(username, password))
+                r = requests.get(pagination, auth=(self.username, self.password))
                 data = r.json()
                 for ticket in data['tickets']:
                     table.append_row([ticket.get(key) for key in data_to_display])
                 table.append_row(['', '<<<     End of page {}     >>>'.format(str(page_count)), ''])
-                print (table)
+                print(table)
                 page_count += 1
                 pagination = data['next_page']
                 next_page = input("Press 'enter' to continue ")
@@ -51,9 +49,9 @@ class Tickets:
             while url:
                 ticket_id = input("Please enter a ticket number: ")
                 ticket_url = '{}/{}.json'.format(url, ticket_id)
-                r = requests.get(ticket_url, auth=(username, password))
+                r = requests.get(ticket_url, auth=(self.username, self.password))
                 data = r.json()
-                print (pd.DataFrame(data))
+                print(pd.DataFrame(data))
         except KeyError:
             print("URL/Authentication error")
         except ValueError:
