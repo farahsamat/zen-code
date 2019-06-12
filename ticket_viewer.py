@@ -32,9 +32,10 @@ def display_menu(options):
 
 
 if __name__ == "__main__":
-    username = os.getenv("USERNAME")
-    password = os.getenv("PASSWORD")
-    root_url = 'https://farahsamat.zendesk.com/api/v2/tickets'
+    username = input('Please enter your username: ')
+    password = input('Please enter your password: ')
+    subdomain = input('Please enter your subdomain: ')
+    root_url = f'https://{subdomain}.zendesk.com/api/v2/tickets'
     page_size = 25
 
     tickets = Tickets(username, password, root_url)
@@ -45,7 +46,7 @@ if __name__ == "__main__":
             next_page = 1
             next_page = tickets.view_list(next_page, page_size)
             while next_page:
-                input("Press any key to view the next page")
+                input("Press enter to view the next page")
                 next_page = tickets.view_list(next_page, page_size)
         elif choice == 2:
             ticket_id = input("Please enter a ticket number: ")
