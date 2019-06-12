@@ -17,18 +17,18 @@ The ticket viewer is a CLI. Ensure you are working in the directory where the sc
 Choose your option:
 
 <b>Option 1</b> will display a list of tickets. The list will only display a maximum of 25 tickets at a time.
-![Ticket list](https://github.com/farahsamat/blob/master/images/sample_list.png)
+![Ticket list](https://github.com/farahsamat/zen-code/blob/master/images/sample_list.png)
 
 <b>Option 2</b> will prompt you to select a ticket to view the details.
-![Ticket details](https://github.com/farahsamat/blob/master/images/sample_ticket.png)
+![Ticket details](https://github.com/farahsamat/zen-code/blob/master/images/sample_ticket.png)
 
 If an invalid ticket number is given, you will be brought back to the main menu.
-![Go back](https://github.com/farahsamat/blob/master/images/back_to_main.png)
+![Go back](https://github.com/farahsamat/zen-code/blob/master/images/back_to_main.png)
 
 <b>Option 3</b> will exit the program.
  
 The ticket viewer will keep prompting for an option if an invalid input is given.
-![Invalid input](https://github.com/farahsamat/blob/master/images/invalid_input.png)
+![Invalid input](https://github.com/farahsamat/zen-code/blob/master/images/invalid_input.png)
 
 ## Acknowledgments
 
