@@ -14,8 +14,8 @@ On the CLI, run: `python -m unittest`
 The ticket viewer is a CLI. Ensure you are working in the directory where the script is saved.
 
 `python ticket_viewer.py`
-<insert main_menu screen shot>
-![Main menu](https://github.com/farahsamat/blob/master/images/main_menu.png)
+
+![Main menu](https://github.com/farahsamat/zen-code/blob/master/images/main_menu.png)
 
 Choose your option:
 
@@ -26,11 +26,13 @@ Choose your option:
 ![Ticket details](https://github.com/farahsamat/zen-code/blob/master/images/sample_ticket.png)
 
 If an invalid ticket number is given, you will be brought back to the main menu.
+
 ![Go back](https://github.com/farahsamat/zen-code/blob/master/images/back_to_main.png)
 
 <b>Option 3</b> will exit the program.
  
 The ticket viewer will keep prompting for an option if an invalid input is given.
+
 ![Invalid input](https://github.com/farahsamat/zen-code/blob/master/images/invalid_input.png)
 
 ## Acknowledgments
