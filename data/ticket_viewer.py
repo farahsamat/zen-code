@@ -1,4 +1,4 @@
-from Tickets import Tickets
+from tickets import Tickets
 import numpy as np
 import os
 os.system('cls' if os.name == 'nt' else 'clear')
@@ -14,9 +14,9 @@ def input_number(prompt):
             num=float(input(prompt))
             break
         except ValueError:
-            print ("Invalid input")
+            print(" ")
+            pass
     return num
-
 
 def display_menu(options):
     print(" ")
